@@ -67,28 +67,10 @@
   align-items: start;
 }
 
-/* Tight gap on purpose: the wire's long tail is mostly single-item days, and a
-   generous gap turns those into a column of isolated fragments. Kept close, the
-   day headers read as a running shift log. */
+/* Flat chronological list — the wire is one continuous run of headlines. */
 .feed {
   display: flex;
   flex-direction: column;
-  gap: 22px;
-}
-
-.day {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.dayHead {
-  font: 500 11px/1 var(--font-mono);
-  color: var(--purple-lt);
-  letter-spacing: 0.18em;
-  padding-bottom: 9px;
-  border-bottom: 1px solid var(--hair);
-  margin-bottom: 2px;
 }
 
 .item {

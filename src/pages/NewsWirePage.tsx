@@ -1,5 +1,5 @@
-import { generatedAt, wire, wireByDay, wireSources } from '../lib/feeds';
-import { agoLabel, logDate, logStamp } from '../lib/time';
+import { generatedAt, wire, wireItems, wireSources } from '../lib/feeds';
+import { agoLabel, logStamp } from '../lib/time';
 import { SITE } from '../lib/site';
 import s from './NewsWirePage.module.css';
 import Seo from '../components/Seo';
@@ -14,7 +14,7 @@ import Seo from '../components/Seo';
  * pages): alt-panel aside, hairline rows, mono meta over a condensed headline.
  */
 export default function NewsWirePage() {
-  const days = wireByDay();
+  const items = wireItems();
   const sources = wireSources();
 
   return (
@@ -41,30 +41,25 @@ export default function NewsWirePage() {
 
       <div className={s.grid}>
         <main className={s.feed}>
-          {days.length === 0 && (
+          {items.length === 0 && (
             <p className={s.empty}>
               WIRE EMPTY — NO ITEMS RETRIEVED AT LAST SYNC. RUN `npm run feeds:fetch`.
             </p>
           )}
 
-          {days.map(({ day, items }) => (
-            <section className={s.day} key={day}>
-              <div className={s.dayHead}>{logDate(day)}</div>
-              {items.map((item) => (
-                <a
-                  className={s.item}
-                  key={item.link}
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className={s.itemMeta}>
-                    {item.source} · {agoLabel(item.publishedAt, generatedAt)}
-                  </span>
-                  <span className={s.itemTitle}>{item.title}</span>
-                </a>
-              ))}
-            </section>
+          {items.map((item) => (
+            <a
+              className={s.item}
+              key={item.link}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className={s.itemMeta}>
+                {item.source} · {agoLabel(item.publishedAt, generatedAt)}
+              </span>
+              <span className={s.itemTitle}>{item.title}</span>
+            </a>
           ))}
         </main>
 
