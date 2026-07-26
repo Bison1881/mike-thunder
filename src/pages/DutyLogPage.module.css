@@ -1,8 +1,11 @@
 /*
  * The full Duty Log archive. Interior page, so not in the approved handoff —
  * built from the same tokens, borrowing exploration 1b (which the handoff names
- * as the reference for later pages): the TPL-01 activity-report card, the
- * rotated "NOTHING TO REPORT" stamp, and case-file rows.
+ * as the reference for later pages).
+ *
+ * The TPL-01 report card and its stamp live in components/report.module.css,
+ * shared with the About page's personnel file. Only the case-file rows and the
+ * page furniture are here.
  */
 .page {
   padding: 56px var(--gutter) var(--section-y);
@@ -33,118 +36,6 @@
   font: 400 17px/1.55 var(--font-body);
   color: var(--muted);
   max-width: 620px;
-}
-
-/* ── TPL-01 activity report (1b) ──────────────────────────────────────── */
-/* Faint horizontal rules behind the card — the duty-paperwork texture. */
-.reportWrap {
-  background:
-    repeating-linear-gradient(0deg, transparent 0 34px, rgba(255, 255, 255, 0.025) 34px 35px),
-    transparent;
-  padding: 22px 0;
-}
-
-.report {
-  background: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 4px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
-  overflow: hidden;
-}
-
-.reportBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 32px;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
-  background: rgba(107, 33, 168, 0.12);
-}
-
-.reportForm {
-  font: 600 13px/1.3 var(--font-mono);
-  letter-spacing: 0.2em;
-  color: var(--purple-ltr);
-}
-
-.reportPage {
-  font: 500 12px/1 var(--font-mono);
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-.reportBody {
-  padding: 34px 32px 38px;
-  position: relative;
-}
-
-.fields {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  font-family: var(--font-mono);
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  min-width: 0;
-}
-
-.fieldLabel {
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  color: var(--muted);
-}
-
-.fieldValue {
-  font-size: 14px;
-  color: var(--text);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  padding-bottom: 5px;
-}
-
-.fieldAccent {
-  color: var(--purple-lt);
-}
-
-/* Remarks line — completes the form, and gives the stamp somewhere to land
-   that isn't on top of a field. */
-.remarks {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 26px;
-  font-family: var(--font-mono);
-}
-
-.remarksValue {
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--text);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  padding-bottom: 12px;
-  /* Capped so the copy never runs under the stamp at any width. */
-  max-width: 60%;
-}
-
-/* The stamp. Sits over the report body, angled like it was pressed on. */
-.stamp {
-  position: absolute;
-  right: 28px;
-  bottom: 20px;
-  transform: rotate(8deg);
-  border: 3px solid var(--purple);
-  color: var(--purple-lt);
-  font: 700 20px/1 var(--font-display);
-  letter-spacing: 0.1em;
-  padding: 10px 16px;
-  border-radius: 4px;
-  opacity: 0.85;
-  pointer-events: none;
-  white-space: nowrap;
 }
 
 /* ── Case-file rows (1b) ──────────────────────────────────────────────── */
@@ -291,30 +182,6 @@
 
 /* ── Responsive ───────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .fields {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-
-  /* The stamp overlaps the field grid once it wraps to two rows. */
-  .stamp {
-    position: static;
-    transform: rotate(-2deg);
-    align-self: flex-start;
-    display: inline-block;
-    margin-top: 24px;
-    font-size: 17px;
-  }
-
-  .reportBody {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .remarksValue {
-    max-width: none;
-  }
-
   .row {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -332,20 +199,5 @@
 
   .title {
     font-size: 36px;
-  }
-
-  .reportBar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .reportForm {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-  }
-
-  .reportBody {
-    padding: 26px 22px 30px;
   }
 }

@@ -1,6 +1,7 @@
 import { latestPosts, logNumber, syncedAt } from '../lib/posts';
 import { logDate, logStamp } from '../lib/time';
 import { SITE } from '../lib/site';
+import r from '../components/report.module.css';
 import s from './DutyLogPage.module.css';
 
 /*
@@ -36,40 +37,40 @@ export default function DutyLogPage() {
         </p>
       </header>
 
-      <div className={s.reportWrap}>
-        <div className={s.report}>
-          <div className={s.reportBar}>
-            <span className={s.reportForm}>DAILY ACTIVITY REPORT — FORM TPL-01</span>
-            <span className={s.reportPage}>PAGE 1 OF 1</span>
+      <div className={r.wrap}>
+        <div className={r.card}>
+          <div className={r.bar}>
+            <span className={r.form}>DAILY ACTIVITY REPORT — FORM TPL-01</span>
+            <span className={r.page}>PAGE 1 OF 1</span>
           </div>
-          <div className={s.reportBody}>
-            <div className={s.fields}>
-              <div className={s.field}>
-                <span className={s.fieldLabel}>OFFICER ON DUTY</span>
-                <span className={s.fieldValue}>{OFFICER}</span>
+          <div className={r.body}>
+            <div className={r.fields}>
+              <div className={r.field}>
+                <span className={r.fieldLabel}>OFFICER ON DUTY</span>
+                <span className={r.fieldValue}>{OFFICER}</span>
               </div>
-              <div className={s.field}>
-                <span className={s.fieldLabel}>BADGE NO.</span>
-                <span className={s.fieldValue}>{BADGE}</span>
+              <div className={r.field}>
+                <span className={r.fieldLabel}>BADGE NO.</span>
+                <span className={r.fieldValue}>{BADGE}</span>
               </div>
-              <div className={s.field}>
-                <span className={s.fieldLabel}>SECTOR</span>
-                <span className={s.fieldValue}>{SECTOR}</span>
+              <div className={r.field}>
+                <span className={r.fieldLabel}>SECTOR</span>
+                <span className={r.fieldValue}>{SECTOR}</span>
               </div>
-              <div className={s.field}>
-                <span className={s.fieldLabel}>ENTRIES FILED</span>
-                <span className={`${s.fieldValue} ${s.fieldAccent}`}>
+              <div className={r.field}>
+                <span className={r.fieldLabel}>ENTRIES FILED</span>
+                <span className={`${r.fieldValue} ${r.fieldAccent}`}>
                   {String(posts.length).padStart(3, '0')}
                 </span>
               </div>
             </div>
-            <div className={s.remarks}>
-              <span className={s.fieldLabel}>REMARKS</span>
-              <span className={s.remarksValue}>
+            <div className={r.remarks}>
+              <span className={r.fieldLabel}>REMARKS</span>
+              <span className={r.remarksValue}>
                 All quiet. Perimeter secure. Nothing further to report — see attached case files.
               </span>
             </div>
-            <div className={s.stamp}>NOTHING TO REPORT</div>
+            <div className={r.stamp}>NOTHING TO REPORT</div>
           </div>
         </div>
       </div>

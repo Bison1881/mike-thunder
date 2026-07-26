@@ -2,6 +2,7 @@ import type { RouteRecord } from 'vite-react-ssg';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import DutyLogPage from './pages/DutyLogPage';
+import AboutPage from './pages/AboutPage';
 import NewsWirePage from './pages/NewsWirePage';
 import StubPage from './pages/StubPage';
 import NotFound from './pages/NotFound';
@@ -31,17 +32,7 @@ export const routes: RouteRecord[] = [
           />
         ),
       },
-      {
-        path: 'about',
-        element: (
-          <StubPage
-            kicker="SECTION · ABOUT"
-            title="ABOUT MIKE THUNDER"
-            blurb="Credentials, career, and the philosophy behind reporting nothing with total professionalism."
-            note="PAGE NOT YET DESIGNED"
-          />
-        ),
-      },
+      { path: 'about', element: <AboutPage /> },
       {
         path: 'contact',
         element: (

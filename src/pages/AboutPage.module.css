@@ -1,0 +1,185 @@
+/*
+ * About Mike Thunder. Interior page — same tokens, and the personnel-file card
+ * reuses components/report.module.css (exploration 1b's form card).
+ */
+.page {
+  padding: 56px var(--gutter) var(--section-y);
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kicker {
+  font: 500 12px/1 var(--font-mono);
+  color: var(--purple-lt);
+  letter-spacing: 0.22em;
+}
+
+.title {
+  font: 700 52px/1.02 var(--font-display);
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+/* ── Body: prose beside the badge ─────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 44px;
+  align-items: start;
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 660px;
+}
+
+.lead {
+  font: 400 20px/1.5 var(--font-body);
+  color: var(--text);
+}
+
+.prose p {
+  font: 400 16.5px/1.65 var(--font-body);
+  color: var(--muted);
+}
+
+/* Pull quote — Mike's own line from the intro post */
+.quote {
+  border-left: 2px solid var(--purple);
+  padding: 4px 0 4px 20px;
+  margin: 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quoteText {
+  font: 700 26px/1.25 var(--font-cond);
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.quoteCite {
+  font: 500 11px/1 var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+/* Badge column */
+.badge {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--hair-soft);
+  border-radius: 6px;
+  padding: 26px 22px;
+  text-align: center;
+}
+
+.badgeImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.badgeName {
+  font: 700 20px/1.1 var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+.badgeRole {
+  font: 500 11px/1.5 var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.14em;
+}
+
+/* ── Closing strip ────────────────────────────────────────────────────── */
+.closing {
+  background: rgba(107, 33, 168, 0.1);
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  border-radius: 4px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.closingLabel {
+  font: 700 15px/1 var(--font-display);
+  letter-spacing: 0.08em;
+  color: var(--purple-ltr);
+  white-space: nowrap;
+}
+
+.closingCopy {
+  font: 400 14px/1.5 var(--font-body);
+  color: var(--muted);
+  flex: 1;
+  min-width: 220px;
+}
+
+.closingBtn {
+  background: var(--purple);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 4px;
+  font: 600 13px/1 var(--font-cond);
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+}
+
+.closingBtn:hover {
+  background: var(--purple-lt);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .badge {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .badgeImg {
+    width: 92px;
+    height: 92px;
+    flex: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 40px var(--gutter) var(--section-y);
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .lead {
+    font-size: 18px;
+  }
+
+  .quoteText {
+    font-size: 22px;
+  }
+}
