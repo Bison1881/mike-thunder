@@ -1,0 +1,351 @@
+/*
+ * The full Duty Log archive. Interior page, so not in the approved handoff —
+ * built from the same tokens, borrowing exploration 1b (which the handoff names
+ * as the reference for later pages): the TPL-01 activity-report card, the
+ * rotated "NOTHING TO REPORT" stamp, and case-file rows.
+ */
+.page {
+  padding: 56px var(--gutter) var(--section-y);
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+/* ── Page header ──────────────────────────────────────────────────────── */
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kicker {
+  font: 500 12px/1 var(--font-mono);
+  color: var(--purple-lt);
+  letter-spacing: 0.22em;
+}
+
+.title {
+  font: 700 52px/1.02 var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+.deck {
+  font: 400 17px/1.55 var(--font-body);
+  color: var(--muted);
+  max-width: 620px;
+}
+
+/* ── TPL-01 activity report (1b) ──────────────────────────────────────── */
+/* Faint horizontal rules behind the card — the duty-paperwork texture. */
+.reportWrap {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 34px, rgba(255, 255, 255, 0.025) 34px 35px),
+    transparent;
+  padding: 22px 0;
+}
+
+.report {
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.reportBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 32px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
+  background: rgba(107, 33, 168, 0.12);
+}
+
+.reportForm {
+  font: 600 13px/1.3 var(--font-mono);
+  letter-spacing: 0.2em;
+  color: var(--purple-ltr);
+}
+
+.reportPage {
+  font: 500 12px/1 var(--font-mono);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.reportBody {
+  padding: 34px 32px 38px;
+  position: relative;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  font-family: var(--font-mono);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.fieldLabel {
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.fieldValue {
+  font-size: 14px;
+  color: var(--text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 5px;
+}
+
+.fieldAccent {
+  color: var(--purple-lt);
+}
+
+/* Remarks line — completes the form, and gives the stamp somewhere to land
+   that isn't on top of a field. */
+.remarks {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 26px;
+  font-family: var(--font-mono);
+}
+
+.remarksValue {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 12px;
+  /* Capped so the copy never runs under the stamp at any width. */
+  max-width: 60%;
+}
+
+/* The stamp. Sits over the report body, angled like it was pressed on. */
+.stamp {
+  position: absolute;
+  right: 28px;
+  bottom: 20px;
+  transform: rotate(8deg);
+  border: 3px solid var(--purple);
+  color: var(--purple-lt);
+  font: 700 20px/1 var(--font-display);
+  letter-spacing: 0.1em;
+  padding: 10px 16px;
+  border-radius: 4px;
+  opacity: 0.85;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── Case-file rows (1b) ──────────────────────────────────────────────── */
+.filesHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--hair);
+  padding-bottom: 14px;
+}
+
+.filesTitle {
+  font: 700 26px/1 var(--font-display);
+  letter-spacing: 0.06em;
+}
+
+.filesNote {
+  font: 500 11px/1 var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.files {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 128px 1fr 190px 30px;
+  gap: 20px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--hair-soft);
+  border-radius: 4px;
+  padding: 20px 24px;
+  color: var(--text);
+  transition: border-color 0.12s ease;
+}
+
+.row:hover {
+  border-color: var(--purple);
+  color: var(--text);
+}
+
+.rowLog {
+  font: 600 13px/1 var(--font-mono);
+  color: var(--purple-lt);
+  letter-spacing: 0.08em;
+}
+
+.rowMain {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.rowTitle {
+  font: 600 20px/1.25 var(--font-cond);
+}
+
+.row:hover .rowTitle {
+  color: var(--purple-ltr);
+}
+
+.rowExcerpt {
+  font: 400 14px/1.5 var(--font-body);
+  color: var(--muted);
+}
+
+/* Inline PINNED chip, outlined in purple (1b variant) */
+.pinned {
+  font: 500 10px/1 var(--font-mono);
+  border: 1px solid rgba(181, 124, 232, 0.5);
+  color: var(--purple-lt);
+  padding: 3px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.1em;
+  margin-left: 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.rowFiled {
+  font: 400 12px/1.4 var(--font-mono);
+  color: var(--muted);
+}
+
+.rowArrow {
+  color: var(--purple-lt);
+  font-size: 18px;
+  text-align: right;
+}
+
+/* ── Closing strip ────────────────────────────────────────────────────── */
+.closing {
+  background: rgba(107, 33, 168, 0.1);
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  border-radius: 4px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.closingLabel {
+  font: 700 15px/1 var(--font-display);
+  letter-spacing: 0.08em;
+  color: var(--purple-ltr);
+  white-space: nowrap;
+}
+
+.closingCopy {
+  font: 400 14px/1.5 var(--font-body);
+  color: var(--muted);
+  flex: 1;
+  min-width: 220px;
+}
+
+.closingBtn {
+  background: var(--purple);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 4px;
+  font: 600 13px/1 var(--font-cond);
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+}
+
+.closingBtn:hover {
+  background: var(--purple-lt);
+  color: #fff;
+}
+
+.empty {
+  font: 500 13px/1.6 var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .fields {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  /* The stamp overlaps the field grid once it wraps to two rows. */
+  .stamp {
+    position: static;
+    transform: rotate(-2deg);
+    align-self: flex-start;
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 17px;
+  }
+
+  .reportBody {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .remarksValue {
+    max-width: none;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .rowArrow {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 40px var(--gutter) var(--section-y);
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .reportBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .reportForm {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+
+  .reportBody {
+    padding: 26px 22px 30px;
+  }
+}

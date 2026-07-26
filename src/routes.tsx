@@ -1,6 +1,7 @@
 import type { RouteRecord } from 'vite-react-ssg';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
+import DutyLogPage from './pages/DutyLogPage';
 import NewsWirePage from './pages/NewsWirePage';
 import StubPage from './pages/StubPage';
 import NotFound from './pages/NotFound';
@@ -17,17 +18,7 @@ export const routes: RouteRecord[] = [
     element: <Layout />,
     children: [
       { index: true, element: <HomePage /> },
-      {
-        path: 'duty-log',
-        element: (
-          <StubPage
-            kicker="SECTION · DUTY LOG"
-            title="THE FULL DUTY LOG"
-            blurb="Every entry, newest first — the complete archive of incidents, non-incidents, and long quiet stretches."
-            note="ARCHIVE PAGE NOT YET DESIGNED · ENTRIES CURRENTLY LIVE ON SUBSTACK"
-          />
-        ),
-      },
+      { path: 'duty-log', element: <DutyLogPage /> },
       { path: 'news-wire', element: <NewsWirePage /> },
       {
         path: 'links',
