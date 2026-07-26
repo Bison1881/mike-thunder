@@ -1,4 +1,5 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Ticker from './Ticker';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
@@ -18,6 +19,12 @@ export default function Layout() {
       </main>
       <SiteFooter />
       <ScrollRestoration />
+      {/*
+       * Vercel Web Analytics. Cookieless and does not collect personal data, so
+       * it needs no consent banner. Lives in the Layout so it mounts once and
+       * follows client-side route changes rather than only the first load.
+       */}
+      <Analytics />
     </>
   );
 }
