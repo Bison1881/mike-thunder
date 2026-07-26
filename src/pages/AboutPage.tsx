@@ -20,7 +20,7 @@ export default function AboutPage() {
     <div className={s.page}>
       <Seo
         title="About Mike Thunder"
-        description="Decades on the security beat, one self-issued commendation, and an unbroken record of nothing to report. Truth is optional, humor is mandatory."
+        description="A lifetime on the security beat, one self-issued commendation, and an unbroken record of nothing to report. Truth is optional, humor is mandatory."
         path="/about"
       />
       <header className={s.head}>
@@ -65,7 +65,7 @@ export default function AboutPage() {
           <img className={s.badgeImg} src="/logo.webp" alt="Mike Thunder" width={150} height={150} />
           <span className={s.badgeName}>MIKE THUNDER</span>
           <span className={s.badgeRole}>
-            SECURITY OFFICER
+            SECURITY LEGEND
             <br />
             THE THIN PURPLE LINE
           </span>
