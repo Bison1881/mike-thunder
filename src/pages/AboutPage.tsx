@@ -86,15 +86,15 @@ export default function AboutPage() {
               </div>
               <div className={r.field}>
                 <span className={r.fieldLabel}>POSITION</span>
-                <span className={r.fieldValue}>SECURITY OFFICER · 24/7</span>
+                <span className={r.fieldValue}>SECURITY LEGEND</span>
               </div>
               <div className={r.field}>
                 <span className={r.fieldLabel}>YEARS OF SERVICE</span>
-                <span className={r.fieldValue}>DECADES</span>
+                <span className={r.fieldValue}>LIFETIME</span>
               </div>
               <div className={r.field}>
                 <span className={r.fieldLabel}>PRIOR POSTING</span>
-                <span className={r.fieldValue}>LOSS PREVENTION AGENT</span>
+                <span className={r.fieldValue}>EVERYTHING</span>
               </div>
               <div className={r.field}>
                 <span className={r.fieldLabel}>COMMENDATION</span>
@@ -112,8 +112,8 @@ export default function AboutPage() {
             <div className={r.remarks}>
               <span className={r.fieldLabel}>REMARKS</span>
               <span className={r.remarksValue}>
-                Commendation self-issued, appointment by Mama. Maintains an unbroken record of
-                nothing to report. Keeps a donut on hand at all times.
+                Commendation self-issued. Maintains an unbroken record of
+                nothing to report. Keeps a full donut box on hand at all times.
               </span>
             </div>
             <div className={r.stamp}>ON DUTY</div>
