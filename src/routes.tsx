@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import DutyLogPage from './pages/DutyLogPage';
 import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 import NewsWirePage from './pages/NewsWirePage';
 import StubPage from './pages/StubPage';
 import NotFound from './pages/NotFound';
@@ -33,17 +34,7 @@ export const routes: RouteRecord[] = [
         ),
       },
       { path: 'about', element: <AboutPage /> },
-      {
-        path: 'contact',
-        element: (
-          <StubPage
-            kicker="SECTION · CONTACT"
-            title="CONTACT THE FRONT DESK"
-            blurb="Tips, bookings, and incident reports. Response times vary by shift."
-            note="PAGE NOT YET DESIGNED · NO FORM WIRED UP YET"
-          />
-        ),
-      },
+      { path: 'contact', element: <ContactPage /> },
       {
         path: 'merch',
         element: (

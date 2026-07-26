@@ -79,6 +79,31 @@ Everything editable lives in three files — no CMS yet.
 If the wire has no items at all, the homepage falls back to the design's three
 placeholder slots rather than showing an empty section.
 
+## Contact form (the only server-side code)
+
+`/contact` posts to `api/contact.ts`, a Vercel Function that relays the message
+by email through [Resend](https://resend.com). Mike's address lives in an
+environment variable and is never sent to the browser — that's the reason this
+isn't a `mailto:` link.
+
+**It will not send until three environment variables exist** (Vercel → Project →
+Settings → Environment Variables, then redeploy):
+
+| Variable | Value |
+| --- | --- |
+| `RESEND_API_KEY` | From resend.com → API Keys. Starts `re_`. |
+| `CONTACT_TO_EMAIL` | Where messages land. Never exposed to the client. |
+| `CONTACT_FROM_EMAIL` | A sender on a domain verified in Resend, e.g. `Front Desk <desk@yourdomain.com>`. Resend's `onboarding@resend.dev` works for testing. |
+
+Until they're set the endpoint returns 503 `not_configured` and the form says the
+front desk isn't staffed — deliberately, because a fake success would silently
+lose real messages.
+
+Spam handling is a hidden honeypot field plus a minimum fill time. Both answer
+`200` so a bot sees success and doesn't retry. There's no rate limiting; if the
+form ever gets hammered, that's the thing to add (Vercel Firewall rate limiting
+is the cheapest option, no code).
+
 ## Deploying
 
 Push to the Vercel-linked repo; `vercel.json` runs `npm run build`, whose
