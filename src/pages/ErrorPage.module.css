@@ -1,0 +1,54 @@
+/* Error boundary. Reuses the interior scaffold for layout; this file only adds
+   what the scaffold doesn't have — the reload control and the detail block. */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.reload {
+  background: var(--purple);
+  color: #fff;
+  border: 0;
+  padding: 13px 24px;
+  border-radius: 4px;
+  font: 600 14px/1 var(--font-cond);
+  letter-spacing: 0.16em;
+  cursor: pointer;
+}
+
+.reload:hover {
+  background: var(--purple-lt);
+}
+
+/* Technical detail, available but not shouted */
+.details {
+  margin-top: 6px;
+  max-width: 70ch;
+}
+
+.summary {
+  font: 500 11px/1 var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.summary:hover {
+  color: var(--text);
+}
+
+.trace {
+  margin-top: 10px;
+  padding: 14px 16px;
+  background: var(--card);
+  border: 1px solid var(--hair-soft);
+  border-radius: 4px;
+  font: 400 12px/1.6 var(--font-mono);
+  color: var(--muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+}
