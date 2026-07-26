@@ -15,11 +15,13 @@ import Seo from '../components/Seo';
  */
 
 /*
- * Report-card flavour. "M. THUNDER / 029 / THE PURPLE LINE" is copy from
- * exploration 1b, not real data — it's the duty-paperwork conceit the design
- * runs on. Entry count and filing date are live.
+ * Report-card flavour, not real data — it's the duty-paperwork conceit the
+ * design runs on. Entry count and filing date are live.
+ *
+ * LEGEND rather than OFFICER because the field is labelled "LEGEND ON DUTY";
+ * keep the constant named after its label so the two can't drift apart again.
  */
-const OFFICER = 'M. THUNDER';
+const LEGEND = 'M. THUNDER';
 const BADGE = '7363ND';
 const SECTOR = 'THE PURPLE LINE';
 
