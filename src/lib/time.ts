@@ -16,6 +16,15 @@ export function logDate(iso: string | null | undefined): string {
   return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
 }
 
+/** "26 JUL · 08:54 HRS" — a full patrol-log timestamp, in UTC. */
+export function logStamp(iso: string | null | undefined): string {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${logDate(iso)} · ${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())} HRS`;
+}
+
 /**
  * "2H AGO" — news-wire freshness, measured against when the wire was
  * generated rather than "now". Anchoring to the build timestamp keeps the

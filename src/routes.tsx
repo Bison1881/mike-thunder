@@ -1,6 +1,7 @@
 import type { RouteRecord } from 'vite-react-ssg';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
+import NewsWirePage from './pages/NewsWirePage';
 import StubPage from './pages/StubPage';
 import NotFound from './pages/NotFound';
 
@@ -27,17 +28,7 @@ export const routes: RouteRecord[] = [
           />
         ),
       },
-      {
-        path: 'news-wire',
-        element: (
-          <StubPage
-            kicker="SECTION · NEWS WIRE"
-            title="SECURITY NEWS WIRE"
-            blurb="The full feed of security headlines, aggregated from the wire and refreshed on every build."
-            note="WIRE PAGE NOT YET DESIGNED · CONFIGURE FEEDS IN scripts/feeds.config.mjs"
-          />
-        ),
-      },
+      { path: 'news-wire', element: <NewsWirePage /> },
       {
         path: 'links',
         element: (
