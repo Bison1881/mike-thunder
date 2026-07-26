@@ -23,15 +23,6 @@ const data = rawData as FeedData;
 export const generatedAt = data.generatedAt;
 export const wire: WireItem[] = data.wire ?? [];
 
-/** Every source currently on the wire, with its item count, busiest first. */
-export function wireSources(): { source: string; count: number }[] {
-  const counts = new Map<string, number>();
-  for (const item of wire) counts.set(item.source, (counts.get(item.source) ?? 0) + 1);
-  return [...counts.entries()]
-    .map(([source, count]) => ({ source, count }))
-    .sort((a, b) => b.count - a.count || a.source.localeCompare(b.source));
-}
-
 /**
  * The wire in the order it arrived — newest first, no bucketing by source or by
  * day. A wire is chronological; that's what makes it a wire.

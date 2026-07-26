@@ -125,12 +125,26 @@ async function fetchSource(source) {
     .slice(0, MAX_ITEMS_PER_FEED)
     .map((item) => {
       let title = stripHtml(item.title || '');
-      // Google News appends " - Publisher" to every headline — strip it.
-      if (viaGNews) title = title.replace(/\s+[-–]\s+[^-–]+$/, '').trim();
+      let publisher = '';
+      /*
+       * Google News formats every headline as "Headline - Publisher". We used to
+       * strip the publisher and discard it, labelling items with the name of the
+       * query instead ("Private Security UK") — which read as a topic category
+       * rather than attribution. Keep the publisher and credit it properly.
+       */
+      if (viaGNews) {
+        const parts = title.match(/^(.*?)\s+[-–]\s+([^-–]+)$/);
+        if (parts) {
+          title = parts[1].trim();
+          publisher = parts[2].trim();
+        }
+      }
       return {
         title,
         link: item.link || '',
-        source: source.name,
+        // The outlet that reported it. Native feeds are already publications, so
+        // their configured name is the right label.
+        source: publisher || source.name,
         publishedAt: isoOf(item),
       };
     })

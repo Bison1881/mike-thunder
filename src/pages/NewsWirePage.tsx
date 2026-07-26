@@ -1,4 +1,4 @@
-import { generatedAt, wire, wireItems, wireSources } from '../lib/feeds';
+import { generatedAt, wireItems } from '../lib/feeds';
 import { agoLabel, logStamp } from '../lib/time';
 import { SITE } from '../lib/site';
 import s from './NewsWirePage.module.css';
@@ -6,8 +6,8 @@ import Seo from '../components/Seo';
 
 /*
  * The full Security News Wire — every item the build-time aggregator collected,
- * grouped by day, with the source roster alongside. The homepage shows three of
- * these; this is the rest.
+ * newest first and uncategorised. The homepage shows the three most recent; this
+ * is the rest of them.
  *
  * Interior pages aren't in the approved handoff, so the treatment is borrowed
  * from exploration 1c (which the handoff flags as the reference for later
@@ -15,7 +15,6 @@ import Seo from '../components/Seo';
  */
 export default function NewsWirePage() {
   const items = wireItems();
-  const sources = wireSources();
 
   return (
     <div className={s.page}>
@@ -29,12 +28,11 @@ export default function NewsWirePage() {
         <h1 className={s.title}>SECURITY NEWS WIRE</h1>
         <p className={s.deck}>
           Everything crossing the wire — private security, loss prevention, and the guard beat,
-          pulled from {sources.length} sources and rebuilt on every deploy. Headlines link out to
-          whoever reported them.
+          rebuilt on every deploy. Every headline links out to the outlet that reported it.
         </p>
         <div className={s.status}>
           <span className={s.dot} aria-hidden="true" />
-          {wire.length} ITEMS · {sources.length} SOURCES
+          {items.length} HEADLINES
           {generatedAt ? ` · SYNCED ${logStamp(generatedAt)}` : ''}
         </div>
       </header>
@@ -64,19 +62,6 @@ export default function NewsWirePage() {
         </main>
 
         <aside className={s.aside}>
-          <div>
-            <div className={s.panelHead}>
-              <span className={s.panelTitle}>SOURCES</span>
-              <span className={s.panelNote}>LIVE · RSS</span>
-            </div>
-            {sources.map(({ source, count }) => (
-              <div className={s.sourceRow} key={source}>
-                <span>{source}</span>
-                <span className={s.sourceCount}>{count}</span>
-              </div>
-            ))}
-          </div>
-
           <div className={s.join}>
             <span className={s.joinTitle}>JOIN THE WATCH</span>
             <p className={s.joinCopy}>
