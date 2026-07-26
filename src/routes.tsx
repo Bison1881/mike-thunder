@@ -28,8 +28,8 @@ const pages: RouteRecord[] = [
         description="Gear, reading, and the people worth following — vetted from the guard shack."
         kicker="SECTION · LINKS"
         title="LINKS & RECOMMENDATIONS"
-        blurb="Gear, reading, and the people worth following — vetted from the guard shack."
-        note="PAGE NOT YET DESIGNED"
+        blurb="Gear that survives a night shift, reading worth your time, and the people worth following — all of it vetted from the guard shack."
+        note="LIST STILL BEING VETTED · NOTHING GOES UP UNTIL IT EARNS IT"
       />
     ),
   },
@@ -44,7 +44,7 @@ const pages: RouteRecord[] = [
         kicker="SECTION · MERCH"
         title="MERCH — COMING SOON"
         blurb="Shirts, patches, and at least one hat that says NOTHING TO REPORT."
-        note="STORE NOT OPEN · PLACEHOLDER PAGE"
+        note="NOT IN STOCK YET · SUBSCRIBERS HEAR FIRST"
       />
     ),
   },
