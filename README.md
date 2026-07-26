@@ -61,11 +61,20 @@ Everything editable lives in three files — no CMS yet.
   own content, so the repo holds a last-known-good copy and a failed sync
   degrades to it instead of to an empty duty log. The sync also refuses to
   overwrite a good file with fewer posts than it already has.
-- **`scripts/feeds.config.mjs`** — news-wire sources. ⚠ **The current four are
-  placeholders** (physical-security / loss-prevention defaults) pending your real
-  feed URLs. Each source has a native `url` plus a Google News `query` that is
-  used automatically if the native feed is dead or empty, so a wrong URL degrades
-  instead of leaving a hole.
+- **`scripts/feeds.config.mjs`** — news-wire sources (8). Each has a native `url`
+  plus a Google News `query` (and optional `region`) used automatically if the
+  native feed is dead or empty, so a wrong URL degrades instead of leaving a hole.
+
+  Two things to know before editing:
+  - The four **Private Security US/UK/CA/AU** entries reproduce Mike's Google
+    Alerts searches as plain Google News queries. The Alerts feed URLs embed a
+    personal account id and this repo is public, so they are deliberately not
+    used here. Google News needs no account and returns more items — four of the
+    five Alerts were empty when checked.
+  - **asisonline.org is behind Cloudflare** and 403s every server-side fetch,
+    including all its feed paths. "Security Management" therefore reaches their
+    coverage through Google News rather than a direct feed. Don't waste time
+    re-testing their RSS; it can't be fetched from a build server.
 
 If the wire has no items at all, the homepage falls back to the design's three
 placeholder slots rather than showing an empty section.

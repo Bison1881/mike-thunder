@@ -105,7 +105,7 @@ async function fetchSource(source) {
 
   // Self-heal: no/empty/failed native feed → the source's Google News query.
   if (!feed || !(feed.items || []).length) {
-    const gnews = googleNewsUrl(source.query);
+    const gnews = googleNewsUrl(source.query, source.region);
     if (gnews) {
       try {
         feed = await parseAny(gnews, `${source.name} (Google News)`);
