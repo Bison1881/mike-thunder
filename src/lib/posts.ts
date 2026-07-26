@@ -1,57 +1,66 @@
 /*
- * The Duty Log — the blog's content source. Posts currently live on Substack,
- * so each entry carries its permalink and the site links out. When posts move
- * in-house this module is the seam: swap the array for a markdown/CMS loader and
- * every surface (homepage, archive) keeps working.
+ * The Duty Log. Entries are synced from Mike's Substack feed at build time
+ * (scripts/fetch-posts.mjs → src/data/posts.json) and merged with the editorial
+ * metadata in postMeta.ts, so publishing a post is all it takes for it to appear
+ * here on the next rebuild.
  *
- * Fields mirror the patrol-log flavour of the design: a log number, a date, and
- * an optional "HRS" time stamped on featured entries.
+ * Nothing fetches at runtime — the merge happens during prerender.
  */
+
+import rawPosts from '../data/posts.json';
+import { POST_META } from './postMeta';
 
 export interface Post {
   /** Log number — rendered zero-padded as "LOG #0003". */
   log: number;
   slug: string;
   title: string;
-  /** ISO date (YYYY-MM-DD). Formatted for display by lib/time.ts. */
+  /** ISO date. Formatted for display by lib/time.ts. */
   date: string;
   /** Optional patrol time, e.g. "02:14 HRS" — shown on the featured card. */
   time?: string;
   excerpt: string;
   pinned?: boolean;
-  /** Where the post lives. Substack permalinks for now. */
   url: string;
 }
 
-export const POSTS: Post[] = [
-  {
-    log: 3,
-    slug: 'loss-prevent-right-out-of-their-pants',
-    title: 'How to Loss-Prevent Someone Right Out of Their Pants',
-    date: '2026-06-27',
-    time: '02:14 HRS',
-    excerpt:
-      'A field guide to retail loss prevention, apprehension technique, and the single most confusing arrest of my entire career.',
-    url: 'https://mikethunder.substack.com/p/how-to-loss-prevent-someone-right',
-  },
-  {
-    log: 2,
-    slug: 'status-nothing-to-report',
-    title: 'Status: Nothing To Report',
-    date: '2026-06-17',
-    excerpt: 'The manifesto. Why nothing happening is the whole job.',
-    pinned: true,
-    url: 'https://mikethunder.substack.com/p/status-nothing-to-report',
-  },
-  {
-    log: 1,
-    slug: 'well-hello-there-strangers',
-    title: 'Well, Hello There, Strangers',
-    date: '2026-06-17',
-    excerpt: 'Introductions, credentials, and a tour of the guard shack.',
-    url: 'https://mikethunder.substack.com/p/well-hello-there-strangers',
-  },
-];
+interface SyncedPost {
+  slug: string;
+  title: string;
+  url: string;
+  date: string;
+  excerpt: string;
+}
+
+interface PostData {
+  generatedAt: string | null;
+  posts: SyncedPost[];
+}
+
+const data = rawPosts as PostData;
+
+export const syncedAt = data.generatedAt;
+
+/*
+ * posts.json is stored oldest-first, so the index gives each entry its log
+ * number (#0001 is the first entry ever filed). postMeta can pin a number
+ * explicitly if a deletion would otherwise shift it.
+ */
+export const POSTS: Post[] = (data.posts ?? []).map((p, i) => {
+  const meta = POST_META[p.slug] ?? {};
+  return {
+    log: meta.log ?? i + 1,
+    slug: p.slug,
+    title: p.title,
+    date: p.date,
+    time: meta.time,
+    // Hand-written copy wins; the feed's auto-excerpt is the fallback so a brand
+    // new post still reads properly before anyone writes card copy for it.
+    excerpt: meta.excerpt ?? p.excerpt,
+    pinned: meta.pinned,
+    url: p.url,
+  };
+});
 
 /** "LOG #0003" — the mono chip that opens every card's meta row. */
 export function logNumber(post: Post): string {

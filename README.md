@@ -33,6 +33,7 @@ npm run dev          # local dev at http://localhost:5173
 npm run build        # prebuild fetches feeds → vite-react-ssg build → dist/
 npm run preview      # serve the built dist/
 npm run typecheck    # tsc --noEmit
+npm run posts:fetch  # re-sync the duty log from Substack (--dry-run to just look)
 npm run feeds:fetch  # refresh src/data/feeds.json now (--dry-run to just look)
 ```
 
@@ -43,11 +44,23 @@ Everything editable lives in three files — no CMS yet.
 - **`src/lib/site.ts`** — wordmark, status line, Substack URLs, footer copyright,
   the ticker segments, and the two toggles the design exposed
   (`showTicker`, `showWatermark`).
-- **`src/lib/posts.ts`** — the duty log. Each entry has a log number, title, ISO
-  date, optional `time` ("02:14 HRS", shown on the featured card), excerpt,
-  `pinned` flag, and `url`. Newest log number becomes the featured card; the next
-  two stack beside it. When posts move off Substack, swap this array for a
-  markdown/CMS loader — every surface reads through `latestPosts()`.
+- **`src/lib/postMeta.ts`** — the only hand-kept part of the duty log. Titles,
+  dates, URLs, and fallback excerpts sync from Substack automatically
+  (`scripts/fetch-posts.mjs` → `src/data/posts.json`), so **publishing a post is
+  all it takes for it to appear** on the next rebuild. This file adds, per slug,
+  what the feed can't know: the `pinned` flag, the `"02:14 HRS"` patrol stamp,
+  hand-written card copy that overrides the feed's auto-excerpt, and an optional
+  `log` override. A post with no entry here still renders fine on feed data
+  alone. `src/lib/posts.ts` does the merge and is what components read.
+
+  Log numbers come from publish order — oldest is `LOG #0001`. Stable while
+  posts are only added; **deleting** an old post would renumber the ones after
+  it, so pin those with `log` in `postMeta.ts` if that ever happens.
+
+  Unlike the news wire, `src/data/posts.json` **is committed**: it's the site's
+  own content, so the repo holds a last-known-good copy and a failed sync
+  degrades to it instead of to an empty duty log. The sync also refuses to
+  overwrite a good file with fewer posts than it already has.
 - **`scripts/feeds.config.mjs`** — news-wire sources. ⚠ **The current four are
   placeholders** (physical-security / loss-prevention defaults) pending your real
   feed URLs. Each source has a native `url` plus a Google News `query` that is
@@ -60,8 +73,9 @@ placeholder slots rather than showing an empty section.
 ## Deploying
 
 Push to the Vercel-linked repo; `vercel.json` runs `npm run build`, whose
-`prebuild` step regenerates the wire. `src/data/feeds.json` is a **build
-artifact** and is gitignored.
+`prebuild` step re-syncs the posts and regenerates the wire. `src/data/feeds.json`
+is a **build artifact** and is gitignored; `src/data/posts.json` is committed (see
+above).
 
 To refresh the wire on a schedule, `.github/workflows/refresh-feeds.yml` pings a
 Vercel Deploy Hook every 3 hours. One-time setup: create the hook in

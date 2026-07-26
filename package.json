@@ -7,12 +7,13 @@
   "scripts": {
     "predev": "node scripts/ensure-feeds.mjs",
     "dev": "vite",
-    "prebuild": "npm run feeds:fetch",
+    "prebuild": "npm run posts:fetch && npm run feeds:fetch",
     "build": "vite-react-ssg build",
     "preview": "vite preview",
     "pretypecheck": "node scripts/ensure-feeds.mjs",
     "typecheck": "tsc --noEmit",
-    "feeds:fetch": "node scripts/fetch-feeds.mjs"
+    "feeds:fetch": "node scripts/fetch-feeds.mjs",
+    "posts:fetch": "node scripts/fetch-posts.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
