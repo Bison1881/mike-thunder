@@ -20,7 +20,7 @@ import Seo from '../components/Seo';
  * runs on. Entry count and filing date are live.
  */
 const OFFICER = 'M. THUNDER';
-const BADGE = '029';
+const BADGE = '7363ND';
 const SECTOR = 'THE PURPLE LINE';
 
 export default function DutyLogPage() {
@@ -52,8 +52,8 @@ export default function DutyLogPage() {
           <div className={r.body}>
             <div className={r.fields}>
               <div className={r.field}>
-                <span className={r.fieldLabel}>OFFICER ON DUTY</span>
-                <span className={r.fieldValue}>{OFFICER}</span>
+                <span className={r.fieldLabel}>LEGEND ON DUTY</span>
+                <span className={r.fieldValue}>{LEGEND}</span>
               </div>
               <div className={r.field}>
                 <span className={r.fieldLabel}>BADGE NO.</span>
