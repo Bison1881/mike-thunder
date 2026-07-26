@@ -32,20 +32,21 @@ export default function AboutPage() {
         <div className={s.prose}>
           <p className={s.lead}>
             Friends and neighbors, I'm Mike Thunder — and depending on who you ask, the greatest
-            security guard who ever clipped on a badge.
+            security guard who ever clipped on a badge, and a tie.
           </p>
 
           <p>
             Over decades in security I've come across some of the craziest and downright appalling
-            "sincidents" you'll ever hear about. Retail floors, loss prevention, the long walk
+            "sincidents" you'll ever hear about. Retail floors, loss prevention, the alarm response 
+            in a company patrol car in the last place you wanted to visit, the long walk
             around a dark building at 3 a.m. — I've worked it, and I've written it down.
           </p>
 
           <p>
             Consider this blog my memoirs: how true greatness handles the everyday, the mundane, the
             dangerous and the extraordinary, all while staying cool as a cucumber and occasionally
-            giving the bad guys what's coming to 'em. I might just be the last true 24/7 security
-            guard out there. Don't believe me? Read the log and see for yourself.
+            giving the bad guys what's coming to 'em. I might give the occasional squeeze of my own
+            horn, but I've earned that right. Don't believe me? Read the logs and see for yourself.
           </p>
 
           <div className={s.quote}>
