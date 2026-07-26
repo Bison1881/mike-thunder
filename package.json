@@ -1,0 +1,31 @@
+{
+  "name": "the-thin-purple-line",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Thin Purple Line — Mike Thunder's security duty log. Dark utilitarian design, Substack-backed posts, RSS news wire.",
+  "scripts": {
+    "predev": "node scripts/ensure-feeds.mjs",
+    "dev": "vite",
+    "prebuild": "npm run feeds:fetch",
+    "build": "vite-react-ssg build",
+    "preview": "vite preview",
+    "pretypecheck": "node scripts/ensure-feeds.mjs",
+    "typecheck": "tsc --noEmit",
+    "feeds:fetch": "node scripts/fetch-feeds.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vite-react-ssg": "0.9.1"
+  }
+}

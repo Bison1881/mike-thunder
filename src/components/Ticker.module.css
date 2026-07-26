@@ -1,0 +1,29 @@
+/*
+ * Status ticker — the deep-purple bar above the header. A single inline-flex
+ * track whose content is duplicated 2×, translated 0 → -50% so the loop is
+ * seamless. 48px gap sits between every segment and its ◆ separator.
+ */
+.ticker {
+  background: var(--purple-deep);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 6px 0;
+}
+
+.track {
+  display: inline-flex;
+  gap: 48px;
+  animation: ticker 30s linear infinite;
+  font: 500 12px/1 var(--font-mono);
+  letter-spacing: 0.12em;
+  color: var(--purple-pale);
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

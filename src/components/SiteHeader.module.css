@@ -1,0 +1,128 @@
+/* Header — logo + stacked wordmark on the left, section nav + SUBSCRIBE right. */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--gutter);
+  border-bottom: 1px solid var(--hair);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text);
+}
+
+.brand:hover {
+  color: var(--text);
+}
+
+.logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.wordmark {
+  font: 700 20px/1 var(--font-display);
+  letter-spacing: 0.06em;
+}
+
+.status {
+  font: 500 11px/1.4 var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font: 600 13px/1 var(--font-cond);
+  letter-spacing: 0.18em;
+}
+
+/* Inactive sections sit muted and brighten on hover; the current one is lit. */
+.link {
+  color: var(--muted);
+}
+
+.link:hover {
+  color: var(--text);
+}
+
+.linkActive {
+  color: var(--text);
+}
+
+.subscribe {
+  background: var(--purple);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 4px;
+  letter-spacing: 0.14em;
+}
+
+.subscribe:hover {
+  background: var(--purple-lt);
+  color: #fff;
+}
+
+/* Hamburger — desktop-hidden, so the approved desktop layout is untouched. */
+.menuButton {
+  display: none;
+  background: none;
+  border: 1px solid var(--hair-chip);
+  border-radius: 4px;
+  color: var(--text);
+  font: 600 13px/1 var(--font-cond);
+  letter-spacing: 0.18em;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+/* ── Mobile: nav collapses behind the MENU button ─────────────────────── */
+@media (max-width: 1080px) {
+  .header {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  /* margin-left:auto keeps the button on the right edge even when the brand is
+     wide enough to push it onto its own line. */
+  .menuButton {
+    display: block;
+    margin-left: auto;
+  }
+
+  .nav {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding-bottom: 8px;
+  }
+
+  .navOpen {
+    display: flex;
+  }
+
+  .subscribe {
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .wordmark {
+    font-size: 17px;
+  }
+
+  .logo {
+    width: 44px;
+    height: 44px;
+  }
+}

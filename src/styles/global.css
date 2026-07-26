@@ -1,0 +1,48 @@
+/*
+ * Global base, ported from the approved Home.html design (which set
+ * `margin:0` on body and on every heading/paragraph individually).
+ * Component-specific styles live in *.module.css next to each component.
+ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* No font-smoothing override here on purpose: the approved design renders with
+   the platform default, and forcing `antialiased` visibly thins this type
+   against the ink background. */
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+/* Design default: links are light purple, brightening on hover. Components
+   that need a different colour (nav, card titles, footer) override it. */
+a {
+  color: var(--purple-lt);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--purple-ltr);
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Keyboard focus needs to be visible against the ink background. */
+:focus-visible {
+  outline: 2px solid var(--purple-lt);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+  }
+}

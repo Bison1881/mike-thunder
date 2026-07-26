@@ -1,0 +1,43 @@
+/*
+ * THE THIN PURPLE LINE — design tokens (LOCKED)
+ * Ported 1:1 from design_handoff_thin_purple_line/Home.html (the approved
+ * homepage). Do not drift the palette or the four-register type stack without
+ * sign-off.
+ */
+:root {
+  /* Palette — charcoal/ink page over a deep royal purple accent ramp */
+  --ink: #0e0d11;        /* page background */
+  --card: #17161c;       /* post cards */
+  --panel: #121116;      /* alt panel (interior pages) */
+  --text: #ece9f1;       /* primary text */
+  --muted: #a49dbb;      /* metadata, body copy, inactive nav */
+
+  --purple: #9333ea;     /* buttons, wire rules, chips */
+  --purple-deep: #6b21a8; /* ticker bar, hero gradient */
+  --purple-lt: #b57ce8;  /* links, kickers, log numbers */
+  --purple-ltr: #d3aef5; /* link hover, outlined button text */
+  --purple-pale: #f3e8ff; /* ticker text */
+
+  /* Hairlines — the only borders on the page */
+  --hair: rgba(255, 255, 255, 0.09);      /* header / section / footer rules */
+  --hair-soft: rgba(255, 255, 255, 0.08); /* card borders */
+  --hair-chip: rgba(255, 255, 255, 0.2);  /* outlined chips (PINNED) */
+
+  /* Type registers — each has exactly one job */
+  --font-display: 'Quantico', sans-serif;              /* H1/H2 + wordmark, always uppercase */
+  --font-cond: 'Barlow Condensed', sans-serif;         /* post titles, nav, buttons, labels */
+  --font-body: Barlow, system-ui, sans-serif;          /* body copy */
+  --font-mono: 'IBM Plex Mono', monospace;             /* all log metadata, ticker, footer */
+
+  /* Spacing — 48px page gutter, 56px section padding (design spec) */
+  --gutter: 48px;
+  --section-y: 56px;
+}
+
+/* Mobile: tighten the gutter so the 48px desktop rhythm doesn't crush content */
+@media (max-width: 700px) {
+  :root {
+    --gutter: 20px;
+    --section-y: 40px;
+  }
+}

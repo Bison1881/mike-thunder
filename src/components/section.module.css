@@ -1,0 +1,43 @@
+/*
+ * The section header row shared by every block on the page: a Quantico
+ * heading on the left, a mono/condensed aside on the right, sitting on a
+ * hairline rule. Imported by DutyLog, NewsWire, and the interior scaffolds.
+ */
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--hair);
+  padding-bottom: 14px;
+}
+
+.heading {
+  font: 700 26px/1 var(--font-display);
+  letter-spacing: 0.06em;
+}
+
+/* Right-hand link, e.g. "FULL ARCHIVE →" */
+.action {
+  font: 600 13px/1 var(--font-cond);
+  letter-spacing: 0.18em;
+  color: var(--purple-lt);
+}
+
+/* Right-hand static note, e.g. "VIA RSS · UPDATED HOURLY" */
+.note {
+  font: 500 11px/1 var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 700px) {
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .heading {
+    font-size: 21px;
+  }
+}

@@ -1,0 +1,139 @@
+/*
+ * Duty Log — latest entries. A 1.4fr featured card beside a 1fr column of two
+ * stacked cards, all sharing the same card shell (ink panel, hairline, 6px).
+ */
+.section {
+  padding: var(--section-y) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--hair-soft);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Featured entry ───────────────────────────────────────────────────── */
+.featured {
+  padding: 32px;
+  gap: 16px;
+}
+
+.meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font: 500 12px/1 var(--font-mono);
+  color: var(--purple-lt);
+  letter-spacing: 0.1em;
+}
+
+/* Filled log chip on the featured card */
+.chip {
+  background: rgba(147, 51, 234, 0.18);
+  border: 1px solid rgba(147, 51, 234, 0.4);
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.stamp {
+  color: var(--muted);
+}
+
+.featuredTitle {
+  font: 700 30px/1.15 var(--font-cond);
+  letter-spacing: 0.01em;
+}
+
+.featuredTitle a {
+  color: var(--text);
+}
+
+.featuredTitle a:hover {
+  color: var(--purple-ltr);
+}
+
+.excerpt {
+  font: 400 15.5px/1.6 var(--font-body);
+  color: var(--muted);
+}
+
+.continue {
+  font: 600 13px/1 var(--font-cond);
+  letter-spacing: 0.16em;
+  color: var(--purple-lt);
+}
+
+/* ── Stacked secondary entries ────────────────────────────────────────── */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.small {
+  padding: 24px;
+  gap: 10px;
+  flex: 1;
+}
+
+.smallMeta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font: 500 11.5px/1 var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.logNo {
+  color: var(--purple-lt);
+}
+
+/* Outlined chip — "PINNED" */
+.pinned {
+  border: 1px solid var(--hair-chip);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.smallTitle {
+  font: 600 20px/1.2 var(--font-cond);
+}
+
+.smallTitle a {
+  color: var(--text);
+}
+
+.smallTitle a:hover {
+  color: var(--purple-ltr);
+}
+
+.smallExcerpt {
+  font: 400 14px/1.55 var(--font-body);
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured {
+    padding: 24px;
+  }
+
+  .featuredTitle {
+    font-size: 26px;
+  }
+}
