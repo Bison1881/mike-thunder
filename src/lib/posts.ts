@@ -32,7 +32,7 @@ export const POSTS: Post[] = [
     time: '02:14 HRS',
     excerpt:
       'A field guide to retail loss prevention, apprehension technique, and the single most confusing arrest of my entire career.',
-    url: 'https://mikethunder.substack.com/',
+    url: 'https://mikethunder.substack.com/p/how-to-loss-prevent-someone-right',
   },
   {
     log: 2,
@@ -41,7 +41,7 @@ export const POSTS: Post[] = [
     date: '2026-06-17',
     excerpt: 'The manifesto. Why nothing happening is the whole job.',
     pinned: true,
-    url: 'https://mikethunder.substack.com/',
+    url: 'https://mikethunder.substack.com/p/status-nothing-to-report',
   },
   {
     log: 1,
@@ -49,7 +49,7 @@ export const POSTS: Post[] = [
     title: 'Well, Hello There, Strangers',
     date: '2026-06-17',
     excerpt: 'Introductions, credentials, and a tour of the guard shack.',
-    url: 'https://mikethunder.substack.com/',
+    url: 'https://mikethunder.substack.com/p/well-hello-there-strangers',
   },
 ];
 
