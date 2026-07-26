@@ -29,9 +29,31 @@ So most days there is nothing to do here at all.
   - `git push`
 - Wait ~1–2 minutes, then check the live site
 
-**Easier option, no PowerShell needed:** open the file on github.com, click the pencil
-icon, edit in the browser, and hit "Commit changes". Vercel deploys the same way. Good
-for one-line copy tweaks.
+## Easier option: edit on GitHub, no PowerShell at all
+
+Open the file on github.com, click the pencil icon, edit, hit "Commit changes". Vercel
+deploys exactly as it would from a local push. For one-line copy tweaks this is the
+better tool. Direct links to the files you're most likely to change:
+
+- Ticker, status line, section switches —
+  https://github.com/Bison1881/mike-thunder/edit/main/src/lib/site.ts
+- Pin a post, HRS stamp, card copy —
+  https://github.com/Bison1881/mike-thunder/edit/main/src/lib/postMeta.ts
+- About page words —
+  https://github.com/Bison1881/mike-thunder/edit/main/src/pages/AboutPage.tsx
+- News wire sources —
+  https://github.com/Bison1881/mike-thunder/edit/main/scripts/feeds.config.mjs
+
+Pressing `.` on the repo opens a full VS Code in the browser if you need several files
+at once.
+
+**Two things to remember when you edit on the web:**
+
+- Your local folder is now behind. Run `git pull` before editing locally again, or you'll
+  get conflicts.
+- You can't run a build check first, so a typo means a failed deploy. The previous
+  version stays live, so the site never goes down — check Vercel → Deployments for a red
+  entry and fix the file.
 
 ---
 
