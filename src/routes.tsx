@@ -82,6 +82,12 @@ export const routes: RouteRecord[] = [
           />
         ),
       },
+      // Prerendered to dist/404.html, which Vercel serves (with a real 404
+      // status) for any path that matches no file. Without this the catch-all
+      // below never becomes a file and unknown URLs get Vercel's stock error
+      // page instead of the branded one.
+      { path: '404', element: <NotFound /> },
+      // Client-side catch-all: covers in-app navigation to a bad path.
       { path: '*', element: <NotFound /> },
     ],
   },
