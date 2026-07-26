@@ -3,6 +3,7 @@ import { logDate, logStamp } from '../lib/time';
 import { SITE } from '../lib/site';
 import r from '../components/report.module.css';
 import s from './DutyLogPage.module.css';
+import Seo from '../components/Seo';
 
 /*
  * The full Duty Log archive — every entry, newest first.
@@ -28,6 +29,11 @@ export default function DutyLogPage() {
 
   return (
     <div className={s.page}>
+      <Seo
+        title="The Duty Log"
+        description="Every entry filed from behind the thin purple line, newest first — incidents, non-incidents, and the long quiet stretches in between."
+        path="/duty-log"
+      />
       <header className={s.head}>
         <div className={s.kicker}>SECTION · DUTY LOG</div>
         <h1 className={s.title}>THE DUTY LOG</h1>

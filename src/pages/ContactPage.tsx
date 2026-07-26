@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { SITE } from '../lib/site';
 import r from '../components/report.module.css';
 import s from './ContactPage.module.css';
+import Seo from '../components/Seo';
 
 /*
  * Contact — an incident-report form (TPL-03) posting to /api/contact, which
@@ -91,6 +92,11 @@ export default function ContactPage() {
 
   return (
     <div className={s.page}>
+      <Seo
+        title="Contact the Front Desk"
+        description="File a report and it reaches Mike directly — story tips, press, podcasts, corrections, and anything else that needs the front desk."
+        path="/contact"
+      />
       <header className={s.head}>
         <div className={s.kicker}>SECTION · CONTACT</div>
         <h1 className={s.title}>CONTACT THE FRONT DESK</h1>

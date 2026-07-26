@@ -2,6 +2,7 @@ import { generatedAt, wire, wireByDay, wireSources } from '../lib/feeds';
 import { agoLabel, logDate, logStamp } from '../lib/time';
 import { SITE } from '../lib/site';
 import s from './NewsWirePage.module.css';
+import Seo from '../components/Seo';
 
 /*
  * The full Security News Wire — every item the build-time aggregator collected,
@@ -18,6 +19,11 @@ export default function NewsWirePage() {
 
   return (
     <div className={s.page}>
+      <Seo
+        title="Security News Wire"
+        description="Aggregated security headlines — private security, loss prevention, and the guard beat — refreshed on every build and linking out to the original reporting."
+        path="/news-wire"
+      />
       <header className={s.head}>
         <div className={s.kicker}>SECTION · NEWS WIRE</div>
         <h1 className={s.title}>SECURITY NEWS WIRE</h1>

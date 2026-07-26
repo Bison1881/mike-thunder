@@ -9,6 +9,7 @@
     "dev": "vite",
     "prebuild": "npm run posts:fetch && npm run feeds:fetch",
     "build": "vite-react-ssg build",
+    "postbuild": "node scripts/build-sitemap.mjs",
     "preview": "vite preview",
     "pretypecheck": "node scripts/ensure-feeds.mjs",
     "typecheck": "tsc --noEmit",

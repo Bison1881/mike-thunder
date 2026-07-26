@@ -26,6 +26,8 @@ export const routes: RouteRecord[] = [
         path: 'links',
         element: (
           <StubPage
+            path="/links"
+            description="Gear, reading, and the people worth following — vetted from the guard shack."
             kicker="SECTION · LINKS"
             title="LINKS & RECOMMENDATIONS"
             blurb="Gear, reading, and the people worth following — vetted from the guard shack."
@@ -39,6 +41,8 @@ export const routes: RouteRecord[] = [
         path: 'merch',
         element: (
           <StubPage
+            path="/merch"
+            description="Shirts, patches, and at least one hat that says NOTHING TO REPORT. Not open yet."
             kicker="SECTION · MERCH"
             title="MERCH — COMING SOON"
             blurb="Shirts, patches, and at least one hat that says NOTHING TO REPORT."

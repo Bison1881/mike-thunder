@@ -4,14 +4,11 @@
   <meta charset="UTF-8" />
   <link rel="icon" href="/logo.webp" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The Thin Purple Line — memoirs of the greatest security guard, ever. Real security, real incidents, and really long stretches where absolutely nothing happens." />
-  <title>The Thin Purple Line — Status: Nothing To Report</title>
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="The Thin Purple Line" />
-  <meta property="og:description" content="Tales from behind the thin purple line. Memoirs of the greatest security guard, ever." />
-  <meta property="og:image" content="/banner.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <!--
+    No <title>, description, or og:* tags here on purpose. Every route supplies
+    its own through components/Seo.tsx, and duplicates in this template would
+    ship a second <title> and a relative og:image on every prerendered page.
+  -->
 
   <!-- Type stack (locked): Quantico · Barlow Condensed · Barlow · IBM Plex Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

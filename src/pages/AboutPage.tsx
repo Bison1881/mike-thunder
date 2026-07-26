@@ -2,6 +2,7 @@ import { POSTS } from '../lib/posts';
 import { SITE } from '../lib/site';
 import r from '../components/report.module.css';
 import s from './AboutPage.module.css';
+import Seo from '../components/Seo';
 
 /*
  * About Mike Thunder.
@@ -17,6 +18,11 @@ import s from './AboutPage.module.css';
 export default function AboutPage() {
   return (
     <div className={s.page}>
+      <Seo
+        title="About Mike Thunder"
+        description="Decades on the security beat, one self-issued commendation, and an unbroken record of nothing to report. Truth is optional, humor is mandatory."
+        path="/about"
+      />
       <header className={s.head}>
         <div className={s.kicker}>SECTION · ABOUT</div>
         <h1 className={s.title}>ABOUT MIKE THUNDER</h1>
