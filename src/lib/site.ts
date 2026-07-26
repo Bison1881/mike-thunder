@@ -23,4 +23,16 @@ export const SITE = {
 
   /** Oversized logo bleeding off the bottom-right of the hero. */
   showWatermark: true,
+
+  /*
+   * Section switches. The pages and their URLs still exist (and stay noindex);
+   * these only control whether the nav and footer point at them, so nobody
+   * clicks through to a section that hasn't opened. Flip to true when there's
+   * something on the other side.
+   *
+   * Note this departs from the approved design, whose nav includes LINKS and
+   * whose footer includes MERCH (SOON). Restoring both is one word each.
+   */
+  showLinks: false,
+  showMerch: false,
 } as const;

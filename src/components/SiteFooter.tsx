@@ -9,7 +9,8 @@ export default function SiteFooter() {
       <span className={s.copy}>{SITE.copyright}</span>
       <div className={s.links}>
         <a href={SITE.substack}>SUBSTACK</a>
-        <Link to="/merch">MERCH (SOON)</Link>
+        {/* Hidden until there's merch — see SITE.showMerch in lib/site.ts. */}
+        {SITE.showMerch && <Link to="/merch">MERCH (SOON)</Link>}
         <Link to="/contact">CONTACT</Link>
       </div>
     </footer>

@@ -12,7 +12,9 @@ const SECTIONS = [
   { label: 'HOME', to: '/' },
   { label: 'DUTY LOG', to: '/duty-log' },
   { label: 'NEWS WIRE', to: '/news-wire' },
-  { label: 'LINKS', to: '/links' },
+  // LINKS is in the approved design but hidden until the list exists — see
+  // SITE.showLinks in lib/site.ts.
+  ...(SITE.showLinks ? [{ label: 'LINKS', to: '/links' }] : []),
   { label: 'ABOUT', to: '/about' },
   { label: 'CONTACT', to: '/contact' },
 ];
