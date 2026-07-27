@@ -28,10 +28,22 @@ const FEED_URL = 'https://mikethunder.substack.com/feed';
 const TIMEOUT_MS = 15_000;
 const EXCERPT_MAX = 150;
 
+/*
+ * no-cache matters here. Substack serves the feed through Cloudflare with
+ * per-edge caching, and a build machine can land on an edge holding a copy from
+ * before the newest post existed — the fetch "succeeds", writes stale data, and
+ * the article silently fails to appear. Observed exactly that: a build fetched
+ * 3 posts (CF-Cache-Status HIT, Age 875) while the origin had 4.
+ */
 const HEADERS = {
   'User-Agent': 'Mozilla/5.0 (compatible; TheThinPurpleLine/1.0)',
   Accept: 'application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.8',
+  'Cache-Control': 'no-cache',
+  Pragma: 'no-cache',
 };
+
+/** Unique query string per run, so a cached edge response can't be reused. */
+const cacheBusted = (url) => `${url}${url.includes('?') ? '&' : '?'}_=${Date.now()}`;
 
 const parser = new Parser({ timeout: TIMEOUT_MS, headers: HEADERS });
 
@@ -66,7 +78,7 @@ async function main() {
 
   let feed;
   try {
-    feed = await parser.parseURL(FEED_URL);
+    feed = await parser.parseURL(cacheBusted(FEED_URL));
   } catch (err) {
     console.warn(`[posts] FAILED (${err.message}) — keeping existing posts.json`);
     return;
