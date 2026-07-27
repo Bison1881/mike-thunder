@@ -1,22 +1,31 @@
 /*
  * Editorial metadata for duty-log entries, keyed by Substack slug.
  *
- * Titles, dates, URLs, and fallback excerpts come from the feed
+ * Titles, dates, URLs, and summaries all come from the feed
  * (scripts/fetch-posts.mjs → src/data/posts.json). Everything here is a
- * deliberate human choice the feed can't supply, so it's kept by hand:
+ * deliberate human choice the feed can't supply:
  *
  *   pinned  — show the outlined PINNED chip
  *   time    — the patrol stamp on the featured card, e.g. "02:14 HRS"
- *   excerpt — hand-written card copy; overrides the feed's auto-excerpt
  *   log     — force a log number (see below)
+ *   excerpt — escape hatch only; see the rule below before using it
  *
- * Log numbers are otherwise assigned from publish order: oldest post is
- * LOG #0001. That's stable as long as posts are only ever added — but deleting
- * an old post would renumber everything after it. If that ever happens, pin the
- * affected numbers here with `log` to keep them permanent.
+ * ── Card summaries are the post's Substack subtitle ──────────────────────
+ * Substack puts the subtitle in the feed's <description>, which is what
+ * fetch-posts.mjs stores as the excerpt. So writing a subtitle on Substack is
+ * all it takes — the card picks it up on the next rebuild, and the site never
+ * disagrees with the post.
  *
- * A slug with no entry here is fine: it renders with feed data alone, which is
- * what makes new posts appear automatically.
+ * That's why `excerpt` overrides are absent here. Don't add one to write nicer
+ * copy; change the subtitle on Substack instead. The single override below
+ * exists only because Substack's feed hasn't yet caught up with an edit.
+ *
+ * ── Log numbers ──────────────────────────────────────────────────────────
+ * Assigned from publish order: oldest post is LOG #0001. Stable as long as
+ * posts are only added — deleting an old one would renumber everything after
+ * it. If that happens, pin the affected numbers here with `log`.
+ *
+ * A slug with no entry here is fine, and normal: it renders on feed data alone.
  */
 
 export interface PostMeta {
@@ -29,14 +38,16 @@ export interface PostMeta {
 export const POST_META: Record<string, PostMeta> = {
   'how-to-loss-prevent-someone-right': {
     time: '02:14 HRS',
-    excerpt:
-      'A field guide to retail loss prevention, apprehension technique, and the single most confusing arrest of my entire career.',
+    /*
+     * TEMPORARY. The post's real subtitle is "Britches Get Stitches, ya'll.",
+     * but this entry was retitled after publishing and Substack's feed still
+     * carries the old body-text description ("For some time at the beginning of
+     * my career…"). Delete this line once the feed shows the subtitle — check
+     * with `npm run posts:fetch -- --dry-run`.
+     */
+    excerpt: "Britches Get Stitches, ya'll.",
   },
   'status-nothing-to-report': {
     pinned: true,
-    excerpt: 'The manifesto. Why nothing happening is the whole job.',
-  },
-  'well-hello-there-strangers': {
-    excerpt: 'Introductions, credentials, and a tour of the guard shack.',
   },
 };
