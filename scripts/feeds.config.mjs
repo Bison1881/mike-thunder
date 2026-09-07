@@ -44,6 +44,23 @@ export const SOURCES = [
   //    that are actually alive and readable rather than vendor SEO copy) ───
   { name: 'Working The Doors', url: 'https://www.workingthedoors.co.uk/feed/', query: '"door supervisor" OR "security guard" UK', region: 'UK' },
   { name: 'GuardsPro', url: 'https://blog.guardspro.com/feed/', query: '"security guard" industry', region: 'US' },
+  // ── Trade press & vendor blogs, round 2 ─────────────────────────────────
+  // ASIS International already has coverage above via the 'Security Management'
+  // Google News query — same publisher (ASIS puts out the Security Management
+  // magazine), so it isn't duplicated here.
+  { name: 'Security Magazine', url: 'https://www.securitymagazine.com/rss/15', query: '"Security Magazine" physical security', region: 'US' },
+  { name: 'SDM Magazine', url: 'https://www.sdmmag.com/rss/15', query: '"SDM Magazine" security integrator', region: 'US' },
+  { name: 'Brilliance Security Magazine', url: 'https://brilliancesecuritymagazine.com/feed/', query: '"Brilliance Security Magazine"', region: 'US' },
+  // WordPress site; feed URL wasn't independently confirmed the way the others
+  // were. Standard /feed/ path — run `npm run feeds:fetch` to check it hits
+  // before relying on it; the Google News query covers it either way.
+  { name: 'Security Journal UK', url: 'https://securityjournaluk.com/feed/', query: '"Security Journal UK" OR SJUK', region: 'UK' },
+  // Genetec, Omdia and Verkada are vendor/analyst sites with no native RSS
+  // feed (checked directly — none publish one), so these are Google-News-only
+  // entries rather than the url+query pairs above.
+  { name: 'Genetec', url: '', query: '"Genetec"', region: 'US' },
+  { name: 'Omdia', url: '', query: '"Omdia" security', region: 'US' },
+  { name: 'Verkada', url: '', query: '"Verkada"', region: 'US' },
 ];
 
 /** Google News RSS for a plain-text query, in the given edition. */
